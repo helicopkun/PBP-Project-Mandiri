@@ -2,10 +2,26 @@ body {
     background-color: rgba(248, 238, 228, 0.8);
 }
 
-.bg{
-    background-color: rgba(1, 1, 115, 0.824);
+p {
+    font-size: 14px; font-weight: 500;
 }
 
-.bg.header{
-    width: 100%;
+.header{
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(17, 42, 92);
+    position: fixed;
+    height: 100%;
+    width: inherit;
+}
+
+.header.title {
+    top: 50%;
+    align-items: center;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
 }
