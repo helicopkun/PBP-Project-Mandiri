@@ -1,0 +1,11 @@
+body {
+    background-color: rgba(248, 238, 228, 0.8);
+}
+
+.bg{
+    background-color: rgba(1, 1, 115, 0.824);
+}
+
+.bg.header{
+    width: 100%;
+}
