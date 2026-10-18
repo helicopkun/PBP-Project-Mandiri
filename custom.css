@@ -153,6 +153,7 @@ p {
     min-height: 50px;
     overflow: hidden;
 
+    color: var(--cirno-blue);
     border: 2px solid var(--cirno-gold);
     padding: 1px;                       
     border-radius: 9px;
@@ -264,4 +265,20 @@ p {
     margin-top: 200px;
     position: absolute;
     align-self: flex-end;
+}
+
+.flake_left {
+    animation: spin_left 20s linear infinite;
+}
+
+.flake_right {
+    animation: spin_right 20s linear infinite;
+}
+
+@keyframes spin_left {
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes spin_right {
+    to { transform: rotate(360deg); }
 }
