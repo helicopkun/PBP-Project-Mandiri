@@ -1,27 +1,114 @@
-body {
-    background-color: rgba(248, 238, 228, 0.8);
+:root {
+    --cirno-deep:  #13367a;
+    --cirno-navy:  #112A5C;
+    --cirno-blue:  #2F6FD6;
+    --cirno-hair:  #6EA8F0;
+    --cirno-ice:   #BFE9FF;
+    --cirno-frost: #F4FAFF;
+    --cirno-red:   #D93A4B;
+    --cirno-cream: #F8EEE4;
+    --cirno-gold:  #e2cf53;
+    --cirno-yellow:  #f7bf3baf;
+    --bs-primary: #2F6FD6;
+    --bs-primary-rgb: 47, 111, 214;
 }
 
-p {
-    font-size: 14px; font-weight: 500;
+body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--cirno-cream);
+}
+
+p { 
+    font-size: 15px; 
+    letter-spacing: .08em; 
 }
 
 .header{
     display: flex;
     flex-direction: column;
+    align-items: center;
 
-    background-color: rgb(17, 42, 92);
+    background-color: var(--cirno-navy);
     position: fixed;
     height: 100%;
     width: inherit;
+
+    background:
+        radial-gradient(circle at 30% 20%, rgba(191, 233, 255, .25), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(111, 168, 240, .2), transparent 30%),
+        linear-gradient(180deg, var(--cirno-deep), var(--cirno-navy) 60%, var(--cirno-deep));
 }
 
-.header.title {
+.header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(1px 2px at 20px 30px,  #fff, transparent),
+        radial-gradient(2px 3px at 140px 70px, #dff3ff, transparent),
+        radial-gradient(3px 3px at 200px 180px, #fff, transparent);
+    background-size: 360px 360px;
+    animation: snow1 14s linear infinite;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(1px 2px at 20px 30px,  #fff, transparent),
+        radial-gradient(3px 3px at 140px 70px, #dff3ff, transparent),
+        radial-gradient(1px 3px at 200px 180px, #fff, transparent);
+    background-size: 300px 300px;
+    animation: snow2 9s linear infinite;
+}
+
+@keyframes snow1 {
+    to { background-position: -360px 720px; }
+    0% { opacity: 100%;}
+    50%, 100% { opacity: 50%;}
+    75% { opacity: 75%;}
+
+}
+
+@keyframes snow2 {
+    to { background-position: -300px 300px; }
+    0% { opacity: 75%;}
+    25% { opacity: 50%;}
+    100% { opacity: 100%;}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header::before { animation: none; }
+    .header::after { animation: none;}
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    
     position: fixed;
     top: 50%;
     align-items: center;
 }
 
+.header-title::after {
+    content: "";
+    width: 240px;
+    height: 1px;
+    background: var(--cirno-gold);
+}
+
+.header_couple {
+    font-family: 'Great Vibes', cursive; 
+    font-weight: 500; 
+    font-size: 50px;
+}
 .panel-wrap {
     position: relative;
     overflow: hidden;
@@ -29,46 +116,134 @@ p {
 }
 
 .menu{
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(191, 233, 255, .45), transparent 60%),
+        radial-gradient(ellipse at 50% 100%, rgba(191, 233, 255, .3), transparent 55%),
+        var(--cirno-cream);
+
     position: absolute;
     inset: 0;
-    min-height: 400px;
     display: flex;
     flex-direction: column;
 
-    transition: transform 0.69s ease-out;
+    transition: transform 0.5s ease-out,
+                opacity 0.3s ease-in;
+    opacity: 1;
 }
 
 .menu.opened {
-    position: absolute;
-    inset: 0;
-    
-    transform: translateX(-100%);
+    background: none;
+    overflow-y: scroll;
+    transform: translateY(100%);
 }
 
 .panel-wrap.opened .menu {
-    transform: translateX(100%);
+    transform: translateY(-100%);
+    opacity: 0;
 }
 
 .panel-wrap.opened .menu.opened {
-    transform: translateX(0);
+    transform: translateY(0);
+    opacity: 1;
 }
 
+.thumbnail {
+    height: 530px;
+    flex: 0 1 auto;
+    min-height: 50px;
+    overflow: hidden;
+
+    border: 2px solid var(--cirno-gold);
+    padding: 1px;                       
+    border-radius: 9px;
+}
+
+.thumbnail img {
+    padding: 0;
+    border-color: var(--cirno-deep);
+    border-width: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
 
 .menu-footer {
+    padding-top: 20px;
     margin-top: auto;
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
+.names {
+    align-self: center;
+    color: var(--cirno-blue);
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    line-height: 0.8;
+}
+
+.amp {
+    position: relative;
+    color: var(--cirno-gold);
+    top: 20px;  
+    opacity: 60%;
+    font-size: 60px;
+    margin-left: -20px;
+}
+
+.n2 { 
+    display: block;
+    margin-top: 15px;
+    margin-left: 25px;
+}
+
+.divider {
+    display: flex;
+    justify-content: center;
+    color: var(--cirno-deep);
+    margin: 0;
+    margin-top: 13px;
+    margin-bottom: 10px;
+}
+
 .button_open {
     height: 40px;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     width: fit-content;
     display: flex;
     align-items: center;
+    align-self: center;
     gap: 9px;
 
+}
+
+.button_open {
+    --bs-btn-color: var(--cirno-cream);
+    --bs-btn-bg: var(--cirno-deep);
+    --bs-btn-border-color: var(--cirno-deep);
+
+    --bs-btn-hover-color: var(--cirno-frost);
+    --bs-btn-hover-bg: var(--cirno-blue);
+    --bs-btn-hover-border-color: var(--cirno-blue);
+
+    --bs-btn-active-color: var(--cirno-frost);
+    --bs-btn-active-bg: var(--cirno-navy);
+    --bs-btn-active-border-color: var(--cirno-navy);
+}
+
+@keyframes bulge {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.1); }
+}
+
+.button_open {
+    animation: bulge 0.9s ease-in-out infinite;
+}
+
+.button_open:hover {
+    animation-play-state: paused;
 }
 
 .receiver {
@@ -79,6 +254,14 @@ p {
 
 .receiver.nama {
     padding-top: 0;
-    padding-left: 55px;
-    padding-bottom: 20px;
+    padding-left: 65px;
+    padding-bottom: 25px;
+}
+
+.menu_decor {
+    opacity: 70%;
+    color: var(--cirno-ice);
+    margin-top: 200px;
+    position: absolute;
+    align-self: flex-end;
 }
