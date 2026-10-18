@@ -17,11 +17,68 @@ p {
 }
 
 .header.title {
+    position: fixed;
     top: 50%;
     align-items: center;
 }
 
+.panel-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
 .menu{
+    position: absolute;
+    inset: 0;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
+
+    transition: transform 0.69s ease-out;
+}
+
+.menu.opened {
+    position: absolute;
+    inset: 0;
+    
+    transform: translateX(-100%);
+}
+
+.panel-wrap.opened .menu {
+    transform: translateX(100%);
+}
+
+.panel-wrap.opened .menu.opened {
+    transform: translateX(0);
+}
+
+
+.menu-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.button_open {
+    height: 40px;
+    margin-left: 50px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+}
+
+.receiver {
+    padding-left: 50px;
+    padding-top: 20px;
+    margin: 0;
+}
+
+.receiver.nama {
+    padding-top: 0;
+    padding-left: 55px;
+    padding-bottom: 20px;
 }
