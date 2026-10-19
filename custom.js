@@ -7,6 +7,7 @@ const day = document.getElementById('days')
 const month = document.getElementById('months')
 const year = document.getElementById('years')
 
+sound.volume = 0.6;
 sound.preload = 'auto';
 sound.loop = true;
 
@@ -59,6 +60,6 @@ const observer = new IntersectionObserver((entries) => {
         entry.target.classList.remove('visible');
     }
   });
-}, { threshold: 0.2 });   // 20% of the element must be visible
+}, { threshold: 0.7 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));

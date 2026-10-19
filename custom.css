@@ -361,8 +361,8 @@ img {
 .reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.6s ease, 
-              transform 0.9s ease;
+  transition: opacity 0.9s ease, 
+              transform 1.4s ease;
 }
 
 .reveal.right {
@@ -373,11 +373,15 @@ img {
     transform: translateX(-40px);
 }
 
+.reveal.popup {
+    transform: scale(0.7);
+}
 
 .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
     transform: translateX(0);
+    transform: scale(1.0);
 }
 
 
@@ -396,9 +400,89 @@ img {
 }
 
 .detail {
+    background-color: var(--cirno-navy);
+    background:
+        radial-gradient(circle at 50% 30%, rgba(80,130,220,.25), transparent 30%),
+        radial-gradient(circle at 50% 75%, rgba(80,130,220,.25), transparent 30%),
+        var(--cirno-navy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
+.detail_title {
+    text-align: center;
+    color: var(--cirno-ice);
+    font-size: 20px;
+    margin-top: 50px;
+}
+
 .detail_couple {
-    
+    display: flex;
+    flex-direction: column;
+}
+
+.detail_couple p {
+    color: var(--cirno-gold);
+    margin-top: -15px;
+    margin-bottom: 0;
+}
+
+.detail_couple_portrait {
+    display: flex;
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    padding: 2px;
+    border: 2px solid var(--cirno-frost);
+    border-radius: 50%;
+}
+
+.detail_couple_portrait img {
+    border: 5px solid var(--cirno-gold);
+    border-radius: 50%;
+}
+
+.detail_couple_contactlist {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.detail_couple_contact {
+    color: var(--cirno-navy);
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: var(--cirno-cream);
+    transition: transform .2s, background-color .2s;
+}
+
+.detail_couple_contact:hover {
+    transform: scale(1.1);
+    background-color: var(--cirno-gold);
+}
+
+.detail_amp {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 60%;
+    font-family: 'Great Vibes', cursive;
+    font-size: 100px;
+}
+
+
+.detail_amp::before, .detail_amp::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cirno-gold), transparent);
 }
