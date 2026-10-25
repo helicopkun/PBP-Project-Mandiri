@@ -60,6 +60,6 @@ const observer = new IntersectionObserver((entries) => {
         entry.target.classList.remove('visible');
     }
   });
-}, { threshold: 0.7 });
+}, { threshold: 0.2 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
