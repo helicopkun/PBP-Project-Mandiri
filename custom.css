@@ -433,7 +433,7 @@ svg {
     align-items: center;
 }
 
-.detail.couple {
+.couple {
     background-color: var(--cirno-navy);
     background:
         radial-gradient(circle at 50% 30%, rgba(80,130,220,.25), transparent 30%),
@@ -521,7 +521,7 @@ svg {
     font-size: 100px;
 }
 
-.detail.event {
+.event {
     background-color: var(--cirno-navy);
 }
 
@@ -530,6 +530,9 @@ svg {
     background-color: var(--cirno-cream);
     border-top-left-radius: 500px;
     border-top-right-radius: 500px;
+
+    padding-bottom: 40px;
+    
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -554,8 +557,8 @@ svg {
 
 .event_decor {
     transform: rotate(30deg);
-    margin-top: 10px;
-    color: var(--cirno-blue);
+    margin-top: 15px;
+    color: var(--cirno-navy);
 }
 
 .event_group {
@@ -625,4 +628,90 @@ svg {
 .event_card_seperator {
     margin: 50px;
     color: var(--cirno-deep);
+}
+
+
+.gallery {
+    background-color: var(--cirno-navy);
+    display: flex;
+}
+
+.gallery_content {
+    background-color: var(--cirno-cream);
+    width: 90%;
+    border-radius: 30px;
+    border-left: 5px solid var(--cirno-gold);
+    border-right: 5px solid var(--cirno-gold);
+}
+
+.gallery_header {
+    margin-top: -2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    gap: 2px;
+}
+
+.gallery_header::before {
+    content: "";
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--cirno-gold), transparent);
+}
+
+.gallery_header_decor {
+    color: var(--cirno-gold);
+    transform: rotate(30deg);
+    margin-top: -30px;
+}
+
+.gallery_title {
+    font-family: 'Great Vibes', cursive;
+    margin-top: 24px;
+    font-size: 34px;
+    color: var(--cirno-deep);
+    margin-bottom: 50px;
+}
+
+.gallery_grid {
+    display: grid;
+    width: 85%;
+    justify-self: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.gallery_item {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid var(--cirno-deep);
+    background-color: var(--cirno-ice);
+    transition: transform 0.2s;
+}
+
+.gallery_item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery_item:hover {
+    transform: scale(1.1);
+}
+
+.gallery_decor {
+    color: var(--cirno-gold);
+    margin-top: 70px;
+    margin-left: 40px;
+    transform: rotate(20deg);
+}
+
+.gallery_decor.right {
+    transform: rotate(40deg);
+    right: 70px;
 }
