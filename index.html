@@ -83,7 +83,8 @@
                 
             </div>
 
-            <div class="menu opened">
+            <div class="menu opened" data-bs-spy="scroll" data-bs-target="#navbarNavAltMarkup" tabindex="0">
+                
 
                 <div class="cover" id="cover">
                     
@@ -127,7 +128,7 @@
                         <svg width="100" height="100" class="decor quote_decor">
                             <use href="#snow2"></use>
                         </svg>
-                        <div class="card-header text-center" style="border-width: 0;">
+                        <div class="card-header text-center" style="border-width: 0; background-color: transparent;">
                             Word of the day
                         </div>
                         <div class="card-body">
@@ -331,14 +332,12 @@
                     </div>
                 </div>
 
-                <div class="detail gallery">
+                <div class="detail gallery" id="detail_gallery">
                     <div class="gallery_content">
-                        <div class="gallery_header">
-                            <div class="gallery_header_decor">
-                                <svg width="50px" height="50px"><use href="#snow3"></use></svg>
-                            </div>
-                            <p class="gallery_title">Our happiest<br>Moments</p>
+                        <div class="decor gallery_decor top">
+                            <svg width="50px" height="50px"><use href="#snow3"></use></svg>
                         </div>
+                        <p class="gallery_title reveal popup">Our happiest<br>Moments</p>
 
                         <div class="gallery_grid reveal">
                             <div class="gallery_item"><img src="image1.png" alt=""></div>
@@ -348,24 +347,29 @@
                             <div class="gallery_item"><img src="image3.png" alt=""></div>
                             <div class="gallery_item"><img src="image4.png" alt=""></div>
                         </div>
-                        <div class="gallery_grid reveal">
+                        <div class="gallery_grid reveal" style="margin-bottom: 20%;">
                             <div class="gallery_item"><img src="image5.png" alt=""></div>
                             <div class="gallery_item"><img src="image6.png" alt=""></div>
                         </div>
-                        <div class="decor gallery_decor">
+                        <div class="decor gallery_decor left">
                             <svg width="80px" height="80px"><use href="#snow2"></use></svg>
-                            <!-- <svg width="80px" height="80px"><use href="#snow2"></use></svg> -->
                         </div>
                         <div class="decor gallery_decor right">
                             <svg width="80px" height="80px"><use href="#snow2"></use></svg>
-                            <!-- <svg width="80px" height="80px"><use href="#snow2"></use></svg> -->
                         </div>
-                        <br><br><br><br>
                     </div>
                 </div>
+                
                 <br><br><br>
 
-
+                <nav class="navbar nav_bar">
+                    <div class="container-fluid justify-content-around">
+                        <a class="nav-link btnNav" href="#cover">Home</a>
+                        <a class="nav-link btnNav" href="#detail_couple">Couple</a>
+                        <a class="nav-link btnNav" href="#detail_event">Event</a>
+                        <a class="nav-link btnNav" href="#detail_gallery">Gallery</a>
+                    </div>
+                </nav>
             </div>
 
         </div>

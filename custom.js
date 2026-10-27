@@ -7,6 +7,7 @@ const day = document.getElementById('days')
 const month = document.getElementById('months')
 const year = document.getElementById('years')
 
+
 sound.volume = 0.6;
 sound.preload = 'auto';
 sound.loop = true;
@@ -52,10 +53,11 @@ const timer = setInterval(updateTimer, 3600000);
 
 
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      
     } else if (entry.boundingClientRect.top > 0) {
         entry.target.classList.remove('visible');
     }
@@ -63,3 +65,37 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.2 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.btnNav').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('href');
+    const section = document.querySelector(id);
+    if (!section) return;
+
+    const r = section.getBoundingClientRect();
+    if (r.top < innerHeight && r.bottom > 0) return;
+
+    const all = document.querySelectorAll('.reveal');
+    const skipped = [];
+    const replay = [];
+
+    all.forEach(el => {
+      if (section.contains(el)) {
+        replay.push(el);
+      } else if (section.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_PRECEDING) {
+        skipped.push(el);
+      }
+    });
+    skipped.forEach(el => el.style.transition = 'none');
+    replay.forEach(el => el.style.transition = 'none');
+
+    skipped.forEach(el => el.classList.add('visible'));
+    replay.forEach(el => el.classList.remove('visible'));
+
+    void section.offsetWidth; //magic for immediate execution
+
+    skipped.forEach(el => el.style.transition = '');
+    replay.forEach(el => el.style.transition = '');
+  });
+});
+
