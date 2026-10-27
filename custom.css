@@ -99,6 +99,7 @@ svg {
     .header::before { animation: none;}
     .header::after { animation: none;}
     .reveal { transition: none; transform: none; opacity: 1;}
+    .nav_bar { transition: none; opacity: 1;}
 }
 
 .header_title {
@@ -690,6 +691,7 @@ svg {
     height: 100%;
     object-fit: cover;
     display: block;
+    cursor: zoom-in;
 }
 
 .gallery_item:hover {
@@ -703,12 +705,12 @@ svg {
 }
 
 .gallery_decor.left {
-    left: 10%;
+    left: 5%;
 }
 
 .gallery_decor.right {
     transform: rotate(40deg);
-    right: 10%;
+    right: 5%;
 }
 
 .gallery_decor.top {
@@ -717,10 +719,20 @@ svg {
 }
 
 .nav_bar {
-    position: sticky;
-    align-self: center;
-    bottom: 30px;
-    width: 250px;
+    visibility: hidden;
+    position: fixed;
+    justify-self: center;
+    bottom: 20px;
+    width: 270px;
+    height: 60px;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+
+.nav_bar.display {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
 }
 
 .nav_bar {
@@ -732,16 +744,110 @@ svg {
 .nav-link {
     color: var(--cirno-frost);
     border-radius: 25px;
-    font-size: 15px;
-    padding-left: 4px;
-    padding-right: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
 }
 
 .nav-link:hover {
     color: var(--cirno-gold);
+    border: 1px solid var(--cirno-gold);
 }
 
 .nav-link.active {
     background-color: var(--cirno-gold);
     color: var(--cirno-navy);
+    width: 40px;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(5, 15, 45, 0.75);
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox img {
+    width: min(80vw, 80vh);
+    height: auto;
+    max-width: 80vw;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.lightbox_close {
+  position: absolute;
+  top: -20px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 80px;
+  cursor: none;
+  user-select: none;
+  width: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.wish {
+    background-color: var(--cirno-navy);
+}
+
+.wish_title {
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    color: var(--cirno-gold);
+    margin-top: 55px;
+}
+
+.wish_subtitle {
+    text-align: center;
+    color: var(--cirno-frost);
+}
+
+.wish_user {
+    color: var(--cirno-frost);
+    align-self: flex-start;
+    margin-left: 4%;
+}
+
+.wish_user p {
+    margin-bottom: 4px;
+}
+
+.wish_user input {
+    margin-left: 5%;
+}
+
+.wish_message {
+    margin-top: 15px;
+    margin-left: 4%;
+    align-self: flex-start;
+    width: 90%;
+}
+
+.wish_message textarea {
+    width: 100%;
+    height: 300px;
+}
+
+.wish_button {
+    background-color: var(--cirno-frost);
+    margin-left: 4%;
+    align-self: flex-start;
+    width: 90%;
+}
+
+.wish_button:hover {
+    background-color: var(--cirno-gold);
 }

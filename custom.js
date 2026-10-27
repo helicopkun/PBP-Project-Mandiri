@@ -1,5 +1,6 @@
 const btnOpen = document.getElementById('btnOpen');
 const panelWrap = document.getElementById('panelWrap');
+const navBar = document.getElementById('navBar');
 const sound = new Audio('/audio.ogg');
 
 const hour = document.getElementById('hours')
@@ -14,6 +15,7 @@ sound.loop = true;
 
 btnOpen.addEventListener('click', () => {
     panelWrap.classList.add('opened');
+    navBar.classList.add('display');
     sound.play();
 })
 
@@ -78,24 +80,56 @@ document.querySelectorAll('.btnNav').forEach(btn => {
     const all = document.querySelectorAll('.reveal');
     const skipped = [];
     const replay = [];
+    const following = [];
 
     all.forEach(el => {
       if (section.contains(el)) {
         replay.push(el);
       } else if (section.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_PRECEDING) {
         skipped.push(el);
+      } else {
+        following.push(el);
       }
     });
-    skipped.forEach(el => el.style.transition = 'none');
-    replay.forEach(el => el.style.transition = 'none');
+
+    const arr = [...skipped, ...replay, ...following];
+
+    arr.forEach(el => el.style.transition = 'none');
 
     skipped.forEach(el => el.classList.add('visible'));
     replay.forEach(el => el.classList.remove('visible'));
+    following.forEach(el => el.classList.remove('visible'));
 
     void section.offsetWidth; //magic for immediate execution
 
-    skipped.forEach(el => el.style.transition = '');
-    replay.forEach(el => el.style.transition = '');
+    arr.forEach(el => el.style.transition = '');
+    
   });
 });
 
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox_img');
+
+document.querySelectorAll('.gallery_item img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+}
+
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox || e.target.classList.contains('lightbox_close')) {
+    closeLightbox();
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
